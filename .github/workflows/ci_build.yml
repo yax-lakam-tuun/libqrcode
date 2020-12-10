@@ -20,6 +20,6 @@ jobs:
       - name: Build docker image
         run: docker build -t libqrcode_ci_build -f ci_build.Dockerfile .
       
-      - name: Build docker image
+      - name: Run libary
         run: docker run libqrcode_ci_build
 
