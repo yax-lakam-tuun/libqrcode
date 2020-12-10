@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build docker image
-        run: docker build -t libqrcode_conan_build -f conan_build.Dockerfile .
+        run: docker build -t libqrcode_conan_demo -f conan_demo.Dockerfile .
       
       - name: Run libary
-        run: docker run libqrcode_conan_build "Hello World!"
+        run: docker run libqrcode_conan_demo "Hello World!"
