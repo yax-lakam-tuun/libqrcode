@@ -1,0 +1,23 @@
+name: Conan
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Build docker image
+        run: docker build -t libqrcode_conan_build -f conan_build.Dockerfile .
+      
+      - name: Run libary
+        run: docker run libqrcode_conan_build "Hello World!"
