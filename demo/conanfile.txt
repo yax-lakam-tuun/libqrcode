@@ -1,0 +1,5 @@
+[requires]
+libqrcode/v1@demo/test
+
+[generators]
+cmake_find_package
