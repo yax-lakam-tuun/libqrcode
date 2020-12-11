@@ -71,7 +71,7 @@ namespace qrcode::code::detail::test
 {
     constexpr auto msb_index_returns_the_bit_position_of_the_most_significant_bit_being_set()
     {
-        static_assert(msb_index(0b0001u) == 1);
+        static_assert(msb_index(0b0001u) == 0);
         static_assert(msb_index(0b0010u) == 1);
         static_assert(msb_index(0b0011u) == 1);
         static_assert(msb_index(0b0100u) == 2);
