@@ -33,7 +33,7 @@ As this libary is header-only, it should be quite easy to setup. Add the libqrco
 
 In your project, just in include the main headers `qr/qr.h` or `micro_qr/micro_qr.h`.
 
-Example:
+#### Simple example
 ```
 #include <qrcode/qr/qr.h>
 #include <qrcode/micro_qr/micro_qr.h>
@@ -41,8 +41,24 @@ Example:
 int main()
 {
     using namespace qrcode;
+
     auto qr_symbol = qr::make_symbol("Foo!", qr::error_correction::level_H);
     auto micro_qr_symbol = micro_qr::make_symbol("Bar!", micro_qr::error_correction::level_L);
+}
+```
+
+#### ECI example
+```
+#include <qrcode/qr/qr.h>
+
+int main()
+{
+    using namespace qrcode;
+    using namespace std::literals;
+    
+    auto symbol = qr::make_symbol(
+        eci::view{eci::assignment_number{9}, "\xC1\xC2\xC3\xC4\xC5"sv}, 
+        qr::error_correction::level_H);
 }
 ```
 
