@@ -14,12 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Build docker image
-        run: docker build -t libqrcode_ci_build -f ci_build.Dockerfile .
-      
-      - name: Run libary
-        run: docker run libqrcode_ci_build
-
+      - name: Run dockerized build
+        run: ci_build.sh
