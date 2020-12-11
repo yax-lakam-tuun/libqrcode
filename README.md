@@ -1,5 +1,5 @@
-# libqrcode
-A C++20 library for generating QR/Micro QR Codes.
+# Introduction
+libqrcode is C++20 header-only library for generating QR/Micro QR Codes.
 
 # QR support
 * Supported: 
@@ -26,7 +26,7 @@ A C++20 library for generating QR/Micro QR Codes.
 
 # How to use
 One can either use the conan recipe provided in this repository or directly integrate the library into your project.
-As this libary is header-only, it should be quite easy to setup.
+As this libary is header-only, it should be quite easy to setup. Add the libqrcode include directory to your project's header search path
 
 In your project, just in include the main headers `qr/qr.h` or `micro_qr/micro_qr.h`.
 
