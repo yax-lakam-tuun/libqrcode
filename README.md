@@ -15,9 +15,11 @@ Supported:
 * Error correction levels: L, M, Q, H
 * Encodings: Numeric, alphanumeric, byte and kanji
 * ECI mode (Enhanced channel interpretation)
+* (Simple) Bit stream optimization
 
 Not supported
 * Structured append mode
+* FNC1 mode
 
 # Micro QR support
 Supported:
