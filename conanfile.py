@@ -4,7 +4,7 @@ from conans import ConanFile
 
 class LibqrcodeConan(ConanFile):
     name = "libqrcode"
-    version = "v1"
+    version = "v1.0"
     exports_sources = "include/*"
     no_copy_source = True
     url = "https://"
