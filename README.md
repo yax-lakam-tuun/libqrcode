@@ -1,28 +1,29 @@
 # Introduction
 libqrcode is C++20 header-only library for generating QR/Micro QR Codes.
 
-# QR support
-* Supported: 
-  * Versions: 1-40
-  * Error correction levels: L, M, Q, H
-  * Encodings: Numeric, alphanumeric, byte and kanji
-  * ECI mode (Enhanced channel interpretation)
-* Not supported
-  * Structured append mode
-
-# Micro QR support
-* Supported:
-  * Versions: M1-M4
-  * Error correction levels: L, M, Q (where possible)
-  * Encodings: Numeric, alphanumeric, byte and kanji encoding (where possible)
-
-# Features
+Features
 * Header-only library
 * Completely constexpr
 * Utilizes standard library only
 * Uses C++20 Ranges
 * No C++ exceptions (however)
 * Supports Conan package manager
+
+# QR support
+Supported: 
+* Versions: 1-40
+* Error correction levels: L, M, Q, H
+* Encodings: Numeric, alphanumeric, byte and kanji
+* ECI mode (Enhanced channel interpretation)
+
+Not supported
+* Structured append mode
+
+# Micro QR support
+Supported:
+* Versions: M1-M4
+* Error correction levels: L, M, Q (where possible)
+* Encodings: Numeric, alphanumeric, byte and kanji encoding (where possible)
 
 # Usage
 One can either use the conan recipe provided in this repository or directly integrate the library into your project.
