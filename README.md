@@ -28,7 +28,7 @@ A C++20 library for generating QR/Micro QR Codes.
 One can either use the conan recipe provided in this repository or directly integrate the library into your project.
 As this libary is header-only, it should be quite easy to setup.
 
-In your project, just in include the main headers qr/qr.h or micro_qr/micro_qr.h.
+In your project, just in include the main headers `qr/qr.h` or `micro_qr/micro_qr.h`.
 
 Example:
 ```
@@ -41,10 +41,10 @@ TODO
 
 # CI builds
 CI builds are usually run in a docker container.
-See ci_build.Dockerfile for more info.
-You can also hit ci_build.sh which creates and runs the docker image for you.
+See `ci_build.Dockerfile` for more info.
+You can also hit `ci_build.sh` which creates and runs the docker image for you.
 
-# Conan demo
+# Conan
 The library supports Conan out of the box.
-The conan_demo.Dockerfile and conan_demo.sh are for demonstration purposes.
+The `conan_demo.Dockerfile` and `conan_demo.sh` are for demonstration purposes.
 It creates a small command-line tools which can create QR symbols from a given text message.
