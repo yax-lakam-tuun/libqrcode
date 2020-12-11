@@ -55,11 +55,16 @@ int main()
 {
     using namespace qrcode;
     using namespace std::literals;
-    
+
     auto symbol = qr::make_symbol(
         eci::view{eci::assignment_number{9}, "\xC1\xC2\xC3\xC4\xC5"sv}, 
         qr::error_correction::level_H);
 }
+```
+
+#### Accessing modules
+```
+TODO
 ```
 
 # Requirements
