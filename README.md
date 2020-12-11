@@ -34,10 +34,11 @@ In your project, just in include the main headers `qr/qr.h` or `micro_qr/micro_q
 Example:
 ```
 #include <qrcode/qr/qr.h>
-#include <qrcode/qr/micro_qr.h>
+#include <qrcode/micro_qr/micro_qr.h>
 
 int main()
 {
+    using namespace qrcode;
     auto qr_symbol = qr::make_symbol("Foo!", qr::error_correction::level_H);
     auto micro_qr_symbol = micro_qr::make_symbol("Bar!", micro_qr::error_correction::level_L);
 }
