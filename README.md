@@ -38,8 +38,8 @@ Example:
 
 int main()
 {
-    auto const qr_symbol = qr::make_symbol("Foo!", qr::error_correction::level_H);
-    auto const micro_qr_symbol = micro_qr::make_symbol("Bar!", micro_qr::error_correction::level_L);
+    auto qr_symbol = qr::make_symbol("Foo!", qr::error_correction::level_H);
+    auto micro_qr_symbol = micro_qr::make_symbol("Bar!", micro_qr::error_correction::level_L);
 }
 ```
 
