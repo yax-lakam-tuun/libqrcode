@@ -64,7 +64,25 @@ int main()
 
 #### Accessing modules
 ```
-TODO
+#include <qrcode/qr/qr.h>
+#include <iostream>
+
+int main()
+{
+    using namespace qrcode;
+    using namespace std::literals;
+    
+    auto symbol = qr::make_symbol("Hello World!"sv, qr::error_correction::level_L).value();
+
+    auto count = 0;
+    for (auto i : views::horizontal(symbol))
+    {
+        std::cout << (i ? '#' : ' ');
+        ++count;
+        if (count % width(symbol) == 0)
+            std::cout << '\n';
+    }
+}
 ```
 
 # Requirements

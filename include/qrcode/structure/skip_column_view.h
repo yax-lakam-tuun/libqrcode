@@ -46,6 +46,12 @@ namespace qrcode::structure::views
     }
 }
 
+namespace qrcode::views
+{
+    using qrcode::structure::views::skip_column;
+}
+
+#ifdef QRCODE_TESTS_ENABLED
 namespace qrcode::structure::test
 {
     constexpr auto skip_column_view_adjusts_positions_to_avoid_given_column()
@@ -78,3 +84,4 @@ namespace qrcode::structure::test
         static_assert(f());
     }
 }
+#endif

@@ -44,6 +44,11 @@ namespace qrcode::code::views
     }
 }
 
+namespace qrcode::views
+{
+    using qrcode::code::views::codeword;
+}
+
 #ifdef QRCODE_TESTS_ENABLED
 namespace qrcode::code::views::test
 {

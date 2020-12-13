@@ -41,7 +41,7 @@ namespace qrcode::qr::detail
     requires std::convertible_to<T, bool>
     [[nodiscard]] constexpr auto dark_module_count(matrix<T> const& matrix) noexcept
     {
-        using namespace qrcode::structure;
+        using qrcode::structure::module_traits;
 
         auto range = 
             views::horizontal({0,0}, size(matrix)) 

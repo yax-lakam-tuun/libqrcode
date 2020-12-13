@@ -60,8 +60,11 @@ namespace qrcode::micro_qr
     [[nodiscard]] constexpr auto code_bits(
         Range&& data_bits, code_capacity const& capacity) noexcept
     {
-        using namespace qrcode::code;
         using qrcode::micro_qr::detail::skip_range;
+        using qrcode::code::gf2p8;
+        using qrcode::code::polynomial_info_t;
+        using qrcode::code::error_correction_polynomial;
+        using qrcode::code::bits_per_codeword;
 
         auto const data_padding = []() { return std::byte{0}; };
         auto const description = make_sequence_description(capacity);

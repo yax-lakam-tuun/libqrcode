@@ -23,15 +23,11 @@
  */
 
 #pragma once
-#include <qrcode/structure/matrix.h>
+#include <qrcode/symbol.h>
 #include <qrcode/structure/module_traits.h>
-#include <qrcode/structure/horizontal_view.h>
-#include <qrcode/structure/element_view.h>
 
 namespace qrcode::detail
 {
-    using qrcode::structure::matrix;
-
     template<class Stream>
     constexpr auto white_background(Stream& stream)
     {
@@ -50,14 +46,14 @@ namespace qrcode::detail
         stream << "</svg>\n";
     }
 
-    template<class T, class Stream>
-    [[nodiscard]] constexpr auto content(Stream& stream, matrix<T> const& symbol)
+    template<class Stream, class Module>
+    [[nodiscard]] constexpr auto content(Stream& stream, matrix<Module> const& modules)
     {
-        using namespace qrcode::structure;
+        using qrcode::structure::module_traits;
 
-        for (auto i : views::horizontal({0,0}, size(symbol)))
+        for (auto i : views::horizontal({0,0}, size(modules)))
         {
-            if (module_traits<T>::is_set(element_at(symbol, i)))
+            if (module_traits<Module>::is_set(element_at(modules, i)))
                 stream << "<path d=\"M" << i.x << " " << i.y << " h1 v1 h-1 z\" />\n";
         }
     }
@@ -65,20 +61,18 @@ namespace qrcode::detail
 
 namespace qrcode
 {
-    using qrcode::structure::matrix;
-
     // example:
     //
-    // matrix<...> symbol = ...;
+    // auto symbol = ...;
     // std::ofstream file{"qrcode.svg", std::ofstream::out};
     // svg(file, symbol);
     //
-    template<class T, class Stream>
-    [[nodiscard]] constexpr auto svg(Stream& stream, matrix<T> const& symbol)
+    template<class Stream, class Module, Symbol_Designator Designator>
+    [[nodiscard]] constexpr auto svg(Stream& stream, symbol<Module, Designator> const& symbol)
     {
         qrcode::detail::header(stream);
         qrcode::detail::white_background(stream);
-        qrcode::detail::content(stream, symbol);
+        qrcode::detail::content(stream, modules(symbol));
         qrcode::detail::footer(stream);
     }
 }

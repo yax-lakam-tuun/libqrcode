@@ -190,6 +190,11 @@ namespace qrcode::code::views
     inline constexpr auto byte = qrcode::code::views::detail::byte_view_adaptor{};
 }
 
+namespace qrcode::views
+{
+    using qrcode::code::views::byte;
+}
+
 #ifdef QRCODE_TESTS_ENABLED
 namespace qrcode::code::detail::test
 {

@@ -173,6 +173,11 @@ namespace qrcode::code::views
     inline constexpr auto bit = qrcode::code::views::detail::bit_view_adaptor{};
 }
 
+namespace qrcode::views
+{
+    using qrcode::code::views::bit;
+}
+
 #ifdef QRCODE_TESTS_ENABLED
 namespace qrcode::code::detail::test
 {

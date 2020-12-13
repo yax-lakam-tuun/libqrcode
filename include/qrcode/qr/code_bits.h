@@ -69,9 +69,11 @@ namespace qrcode::qr
     [[nodiscard]] constexpr auto code_bits(
         Range&& data_bits, code_capacity const& capacity) noexcept
     {
-        using namespace qrcode::code;
         using qrcode::qr::detail::data_padding;
         using qrcode::qr::detail::terminator_padding;
+        using qrcode::code::gf2p8;
+        using qrcode::code::polynomial_info_t;
+        using qrcode::code::error_correction_polynomial;
 
         auto const description = make_sequence_description(capacity);
 

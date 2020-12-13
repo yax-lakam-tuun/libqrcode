@@ -55,7 +55,7 @@ namespace qrcode::qr
             decltype(module_traits<T>::make_function), bool>, T>
         [[nodiscard]] constexpr auto place(matrix<T>& matrix, position top_left) const noexcept
         {
-            using namespace qrcode::structure;
+            using qrcode::structure::module_traits;
             using std::ranges::begin;
             auto const pattern = std::array<bool,width(extend)*height(extend)>{
                 1,1,1,1,1,1,1,
