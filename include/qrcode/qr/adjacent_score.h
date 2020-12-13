@@ -74,7 +74,6 @@ namespace qrcode::qr::detail
     template<class T>
     [[nodiscard]] constexpr auto horizontal_adjacent_score(matrix<T> const& modules)
     {
-        using namespace qrcode::structure;
         auto score = 0;
         for (auto y = 0; y != height(modules); ++y)
         {
@@ -87,7 +86,6 @@ namespace qrcode::qr::detail
     template<class T>
     [[nodiscard]] constexpr auto vertical_adjacent_score(matrix<T> const& modules)
     {
-        using namespace qrcode::structure;
         auto score = 0;
         for (auto x = 0; x != width(modules); ++x)
         {

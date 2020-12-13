@@ -51,7 +51,7 @@ namespace qrcode::micro_qr::detail
     template<class T>
     [[nodiscard]] constexpr auto horizontal_score(matrix<T> const& matrix) noexcept
     {
-        using namespace qrcode::structure;
+        using qrcode::structure::module_traits;
 
         auto range = 
             views::horizontal({1,height(matrix)-1}, {width(matrix)-1,1}) 
@@ -64,7 +64,7 @@ namespace qrcode::micro_qr::detail
     template<class T>
     [[nodiscard]] constexpr auto vertical_score(matrix<T> const& matrix) noexcept
     {
-        using namespace qrcode::structure;
+        using qrcode::structure::module_traits;
 
         auto range = 
             views::vertical({width(matrix)-1,1}, {1,height(matrix)-1}) 

@@ -64,7 +64,6 @@ namespace qrcode::structure
             return contains(matrix, point);
         });
 
-        using namespace qrcode::structure;
         auto range = index 
             | separator
             | to_finder 

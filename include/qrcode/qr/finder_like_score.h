@@ -70,18 +70,17 @@ namespace qrcode::qr::detail
     template<class T>
     [[nodiscard]] constexpr auto horizontal_finder_like_score(matrix<T> const& matrix)
     {
-        auto score = 0;
+        using qrcode::structure::module_traits;
 
+        auto score = 0;
         for (auto y = 0; y != height(matrix); ++y)
         {
-            using namespace qrcode::structure;
             auto range = 
                 views::horizontal({0,y}, {width(matrix),1}) 
                 | views::element(matrix)
                 | std::views::transform([](auto v) { return module_traits<T>::is_set(v); });
             score += finder_line_score(range);
         }
-
         return score;
     }
 
@@ -92,7 +91,6 @@ namespace qrcode::qr::detail
 
         for (auto x = 0; x != width(matrix); ++x)
         {
-            using namespace qrcode::structure;
             auto range = 
                 views::vertical({x,0}, {1,height(matrix)}) 
                 | views::element(matrix)

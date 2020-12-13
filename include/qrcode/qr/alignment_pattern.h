@@ -96,7 +96,6 @@ namespace qrcode::qr::detail
             return true;
         };
         
-        using namespace qrcode::structure;
         return 
             views::cartesian_product(coordinates, coordinates) 
             | std::views::filter(not_near_finder);
@@ -124,7 +123,6 @@ namespace qrcode::qr::detail
             };
             auto const bits = pattern | std::views::transform(module_traits<T>::make_function);
 
-            using namespace qrcode::structure;
             using std::ranges::begin;
             auto range = views::horizontal(top_left, extend) | views::element(matrix);
             std::ranges::copy(bits, begin(range));

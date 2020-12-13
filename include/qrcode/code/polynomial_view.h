@@ -208,6 +208,11 @@ namespace qrcode::code::views
     };
 }
 
+namespace qrcode::views
+{
+    using qrcode::code::views::polynomial;
+}
+
 #ifdef QRCODE_TESTS_ENABLED
 namespace qrcode::code::detail::test
 {

@@ -82,3 +82,8 @@ namespace qrcode::code::views
         return sequence_view_adaptor{std::move(description)};
     };
 }
+
+namespace qrcode::views
+{
+    using qrcode::code::views::sequence;
+}

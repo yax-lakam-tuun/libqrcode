@@ -96,7 +96,6 @@ namespace qrcode::qr
     {
         using std::ranges::begin;
         using std::ranges::end;
-        using namespace qrcode::structure;
         using qrcode::qr::detail::version_information_bits;
         using qrcode::qr::detail::vertical_version_information;
         using qrcode::qr::detail::horizontal_version_information;

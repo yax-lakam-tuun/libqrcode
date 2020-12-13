@@ -73,7 +73,6 @@ namespace qrcode::micro_qr
     {
         using qrcode::structure::module_traits;
         using qrcode::micro_qr::detail::format_positions;
-        using namespace qrcode::structure;
 
         auto make_function = module_traits<T>::make_function;
 
@@ -90,7 +89,7 @@ namespace qrcode::micro_qr
         using qrcode::micro_qr::detail::format;
         using qrcode::micro_qr::detail::format_positions;
         using qrcode::code::format_mask;
-        using namespace qrcode::structure;
+        using qrcode::structure::module_traits;
         
         auto const mask_pattern = format_mask{0b100'0100'0100'0101};
         auto format_bits = masked(

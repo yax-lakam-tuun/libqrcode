@@ -76,7 +76,6 @@ namespace qrcode::qr
     [[nodiscard]] constexpr auto same_color_score(matrix<T> const& matrix)
     {
         using qrcode::qr::detail::same_2x2_score;
-        using namespace qrcode::structure;
 
         auto score = 0;
         for (auto y = 0; y != height(matrix)-1; ++y)

@@ -47,6 +47,11 @@ namespace qrcode::structure::views
     }
 }
 
+namespace qrcode::views
+{
+    using qrcode::structure::views::vertical;
+}
+
 #ifdef QRCODE_TESTS_ENABLED
 namespace qrcode::structure::test
 {

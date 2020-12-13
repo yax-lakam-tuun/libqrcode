@@ -24,11 +24,14 @@
 #pragma once
 
 #include <qrcode/structure/matrix.h>
+#include <qrcode/structure/horizontal_view.h>
+#include <qrcode/structure/vertical_view.h>
+#include <qrcode/structure/element_view.h>
 
 namespace qrcode
 {
-    using qrcode::structure::dimension;
     using qrcode::structure::matrix;
+    using qrcode::structure::dimension;
 
     template<class T>
     concept Symbol_Designator = requires(T t)
@@ -50,11 +53,6 @@ namespace qrcode
         , modules{std::move(matrix)}
         {
         }
-        
-        [[nodiscard]] friend constexpr auto& modules(symbol const& symbol) noexcept 
-        { 
-            return symbol.modules; 
-        }
 
         [[nodiscard]] friend constexpr auto designator(symbol const& symbol) noexcept 
         { 
@@ -64,6 +62,11 @@ namespace qrcode
         [[nodiscard]] friend constexpr auto mask_pattern(symbol const& symbol) noexcept 
         { 
             return symbol.mask_id; 
+        }
+
+        [[nodiscard]] friend constexpr auto modules(symbol const& symbol) noexcept 
+        { 
+            return symbol.modules; 
         }
 
         [[nodiscard]] constexpr auto operator==(symbol const&) const noexcept -> bool = default;
@@ -89,7 +92,7 @@ namespace qrcode
     { 
         return error_level(designator(symbol)); 
     }
-    
+
     template<class Module, Symbol_Designator Designator>
     [[nodiscard]] constexpr auto size(symbol<Module, Designator> const& symbol) noexcept 
     { 
@@ -106,6 +109,33 @@ namespace qrcode
     [[nodiscard]] constexpr auto height(symbol<Module, Designator> const& symbol) noexcept 
     { 
         return height(size(symbol)); 
+    }
+
+    template<class Module, Symbol_Designator Designator>
+    [[nodiscard]] constexpr auto horizontal_view(symbol<Module, Designator> const& symbol)
+    {
+        return views::horizontal({0,0}, size(symbol)) | views::element(modules(symbol));
+    }
+
+    template<class Module, Symbol_Designator Designator>
+    [[nodiscard]] constexpr auto vertical_view(symbol<Module, Designator> const& symbol)
+    {
+        return views::vertical({0,0}, size(symbol)) | views::element(modules(symbol));
+    }
+}
+
+namespace qrcode::views
+{
+    template<class Module, Symbol_Designator Designator>
+    [[nodiscard]] constexpr auto horizontal(symbol<Module, Designator> const& symbol) noexcept
+    {
+        return horizontal_view(symbol);
+    }
+
+    template<class Module, Symbol_Designator Designator>
+    [[nodiscard]] constexpr auto vertical(symbol<Module, Designator> const& symbol) noexcept
+    {
+        return vertical_view(symbol);
     }
 }
 

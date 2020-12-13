@@ -231,5 +231,5 @@ int main(int argc, char** argv)
 
     auto s = symbol.value();
     std::cerr << "generated type   " << designator(s) << "\n";
-    svg(std::cout, modules(symbol.value()));
+    svg(std::cout, symbol.value());
 }

@@ -55,6 +55,12 @@ namespace qrcode::structure::views
     }
 }
 
+namespace qrcode::views
+{
+    using qrcode::structure::views::zigzag;
+}
+
+#ifdef QRCODE_TESTS_ENABLED
 namespace qrcode::structure::test
 {
     constexpr auto zigzag_view_starts_bottom_right_and_zig_zags_up_to_the_top()
@@ -106,3 +112,4 @@ namespace qrcode::structure::test
         static_assert(f());
     }
 }
+#endif

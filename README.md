@@ -55,10 +55,33 @@ int main()
 {
     using namespace qrcode;
     using namespace std::literals;
-    
+
     auto symbol = qr::make_symbol(
         eci::view{eci::assignment_number{9}, "\xC1\xC2\xC3\xC4\xC5"sv}, 
         qr::error_correction::level_H);
+}
+```
+
+#### Accessing modules
+```
+#include <qrcode/qr/qr.h>
+#include <iostream>
+
+int main()
+{
+    using namespace qrcode;
+    using namespace std::literals;
+    
+    auto symbol = qr::make_symbol("Hello World!"sv, qr::error_correction::level_L).value();
+
+    auto count = 0;
+    for (auto i : views::horizontal(symbol))
+    {
+        std::cout << (i ? '#' : ' ');
+        ++count;
+        if (count % width(symbol) == 0)
+            std::cout << '\n';
+    }
 }
 ```
 
