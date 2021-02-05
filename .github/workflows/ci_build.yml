@@ -17,4 +17,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run dockerized build
-        run: ./ci_build.sh
+        run: ./ci/linux_build.sh

@@ -94,8 +94,8 @@ int main()
 
 # CI builds
 CI builds are usually run in a docker container.
-See `ci_build.Dockerfile` for more info.
-You can also hit `ci_build.sh` which creates and runs the docker image for you.
+See `ci/linux.Dockerfile` for more info.
+You can also hit `ci/linux_build.sh` which creates and runs the docker image for you.
 
 # Conan
 The library supports Conan out of the box.
