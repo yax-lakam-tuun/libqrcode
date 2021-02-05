@@ -28,7 +28,9 @@ function(enable_cxx version)
 endfunction()
 
 function(enable_warnings)
-    add_definitions(-Wall -Wextra)
+    if (UNIX)
+        add_definitions(-Wall -Wextra)
+    endif()
 endfunction()
 
 project(libqrcode_demo)

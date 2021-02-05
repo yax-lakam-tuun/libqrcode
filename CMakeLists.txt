@@ -28,7 +28,9 @@ function(enable_cxx version)
 endfunction()
 
 function(enable_warnings)
-    add_definitions(-Wall -Wextra)
+    if (UNIX)
+        add_definitions(-Wall -Wextra)
+    endif()
 endfunction()
 
 project(libqrcode)
@@ -170,7 +172,9 @@ target_sources(qrcode INTERFACE
 )
 
 target_include_directories(qrcode INTERFACE "include")
-target_link_libraries(qrcode INTERFACE stdc++ m)
+target_link_libraries(qrcode INTERFACE $<$<PLATFORM_ID:Linux>:stdc++ m>)
+target_link_libraries(qrcode INTERFACE $<$<PLATFORM_ID:Darwin>:stdc++ m>)
+target_compile_options(qrcode INTERFACE $<$<PLATFORM_ID:Windows>:/std:c++latest>)
 
 if (QRCODE_TESTS_ENABLED)
     add_subdirectory(test)
