@@ -94,10 +94,10 @@ int main()
 
 # CI builds
 CI builds are usually run in a docker container.
-See `ci/linux.Dockerfile` for more info.
-You can also hit `ci/linux_build.sh` which creates and runs the docker image for you.
+See [`ci/linux.Dockerfile`](ci/linux.Dockerfile) for more info.
+You can also hit [`ci/linux_build.sh`](ci/linux_build.sh) which creates and runs the docker image for you.
 
 # Conan
 The library supports Conan out of the box.
-The `conan_demo.Dockerfile` and `conan_demo.sh` are for demonstration purposes.
+The [`conan_demo.Dockerfile`](conan_demo.Dockerfile) and [`conan_demo.sh`](conan_demo.sh) are for demonstration purposes.
 It creates a small command-line tools which can create QR symbols from a given text message.
