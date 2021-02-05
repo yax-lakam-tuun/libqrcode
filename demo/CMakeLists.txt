@@ -29,7 +29,7 @@ endfunction()
 
 function(enable_warnings)
     if (UNIX)
-        add_definitions(-Wall -Wextra)
+        add_definitions(-Wall -Wextra -Wpedantic)
     endif()
 endfunction()
 
