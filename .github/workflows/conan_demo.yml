@@ -16,4 +16,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run dockerized build
-        run: ./conan_demo.sh "Hello World!"
+        run: ./conan_demo/build.sh "Hello World!"
