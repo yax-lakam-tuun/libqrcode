@@ -27,17 +27,10 @@ function(enable_cxx version)
     set(CMAKE_CXX_STANDARD ${version} PARENT_SCOPE)
 endfunction()
 
-function(enable_warnings)
-    if (UNIX)
-        add_definitions(-Wall -Wextra -Wpedantic)
-    endif()
-endfunction()
-
 project(libqrcode)
 
 enable_testing()
 enable_cxx(20)
-enable_warnings()
 
 add_library(qrcode INTERFACE)
 
