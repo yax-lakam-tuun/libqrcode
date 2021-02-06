@@ -1,5 +1,3 @@
-from conans import ConanFile, CMake
-
 from conans import ConanFile
 
 class LibqrcodeConan(ConanFile):

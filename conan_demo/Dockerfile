@@ -19,7 +19,7 @@ COPY --chown=$user_name:$user_name include/ /home/$user_name/libqrcode/library/i
 # conan demo
 RUN mkdir -p /home/$user_name/libqrcode/demo/src && chown $user_name:$user_name /home/$user_name/libqrcode/demo/src && \
     mkdir -p /home/$user_name/libqrcode/demo/bin && chown $user_name:$user_name /home/$user_name/libqrcode/demo/bin
-COPY --chown=$user_name:$user_name demo/ /home/$user_name/libqrcode/demo/src
+COPY --chown=$user_name:$user_name conan_demo/ /home/$user_name/libqrcode/demo/src
 
 USER $user_name
 WORKDIR /home/$user_name/libqrcode/demo/bin
