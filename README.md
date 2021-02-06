@@ -107,8 +107,8 @@ runs the docker image for you.
 # Conan
 The library supports _Conan_ out of the box. The [`conan_demo/Dockerfile`](conan_demo/Dockerfile) 
 and [`conan_demo/build.sh`](conan_demo/build.sh) are for demonstration purposes.
-It creates a small command-line tools which can create QR symbols from a given text message.
+It creates a small command-line tool which can create QR symbols from a given text message.
 
 Please note: 
 The _Conan_ build is part of the CI checks. 
-The tools has to be compiled successfully in order to clear this stage.
+The tool has to be compiled successfully in order to clear this stage.
