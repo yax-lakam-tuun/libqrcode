@@ -1,7 +1,7 @@
 # 
 # The MIT License
 # 
-# Copyright (c) 2020 Sebastian Bauer
+# Copyright (c) 2021 Sebastian Bauer
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -29,9 +29,14 @@ endfunction()
 
 add_executable(libqrcode_test main.cpp)
 
-target_compile_options(libqrcode_test PRIVATE -Wall -Wextra -Wpedantic)
-target_compile_options(libqrcode_test PRIVATE 
-    -fconstexpr-depth=9999999 -fconstexpr-ops-limit=9999999999 -fconcepts-diagnostics-depth=10)
+target_compile_options(libqrcode_test PRIVATE $<$<PLATFORM_ID:Linux>:-Wall -Wextra -Wpedantic>)
+target_compile_options(libqrcode_test PRIVATE $<$<PLATFORM_ID:Darwin>:-Wall -Wextra -Wpedantic>)
+
+target_compile_options(libqrcode_test PRIVATE $<$<PLATFORM_ID:Linux>:
+    -fconstexpr-depth=9999999 -fconstexpr-ops-limit=9999999999 -fconcepts-diagnostics-depth=10>)
+target_compile_options(libqrcode_test PRIVATE $<$<PLATFORM_ID:Darwin>:
+    -fconstexpr-depth=9999999 -fconstexpr-ops-limit=9999999999 -fconcepts-diagnostics-depth=10>)
+
 target_compile_options(libqrcode_test PRIVATE -DQRCODE_TESTS_ENABLED)
 target_link_libraries(libqrcode_test PRIVATE qrcode)
 

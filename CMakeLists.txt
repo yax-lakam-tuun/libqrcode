@@ -1,7 +1,7 @@
 # 
 # The MIT License
 # 
-# Copyright (c) 2020 Sebastian Bauer
+# Copyright (c) 2021 Sebastian Bauer
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -27,15 +27,10 @@ function(enable_cxx version)
     set(CMAKE_CXX_STANDARD ${version} PARENT_SCOPE)
 endfunction()
 
-function(enable_warnings)
-    add_definitions(-Wall -Wextra)
-endfunction()
-
 project(libqrcode)
 
 enable_testing()
 enable_cxx(20)
-enable_warnings()
 
 add_library(qrcode INTERFACE)
 
@@ -170,7 +165,9 @@ target_sources(qrcode INTERFACE
 )
 
 target_include_directories(qrcode INTERFACE "include")
-target_link_libraries(qrcode INTERFACE stdc++ m)
+target_link_libraries(qrcode INTERFACE $<$<PLATFORM_ID:Linux>:stdc++ m>)
+target_link_libraries(qrcode INTERFACE $<$<PLATFORM_ID:Darwin>:stdc++ m>)
+target_compile_options(qrcode INTERFACE $<$<PLATFORM_ID:Windows>:/std:c++latest>)
 
 if (QRCODE_TESTS_ENABLED)
     add_subdirectory(test)

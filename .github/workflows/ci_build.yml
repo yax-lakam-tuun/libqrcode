@@ -16,5 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run dockerized build
-        run: ./ci_build.sh
+      - name: Run tests
+        run: ./test/linux_run.sh
+
+      - name: Run conan demo
+        run: ./conan_demo/run.sh "Hello World!"

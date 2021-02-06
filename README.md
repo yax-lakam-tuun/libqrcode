@@ -29,10 +29,12 @@ Supported:
 * Encodings: Numeric, alphanumeric, byte and kanji encoding (where possible)
 
 # Usage
-One can either use the conan recipe provided in this repository or directly integrate the library into your project.
-As this libary is header-only, it should be quite easy to setup. Add the libqrcode include directory to your project's header search path
+One can either use the conan recipe provided in this repository or directly integrate the library 
+into your project. As this libary is header-only, it should be quite easy to setup. 
+Add the libqrcode include directory to your project's header search path
 
-In your project, just in include the main headers `qr/qr.h` or `micro_qr/micro_qr.h`.
+In your project, just in include the main headers [`qr/qr.h`](include/qrcode/qr/qr.h) or 
+[`micro_qr/micro_qr.h`](include/qrcode/micro_qr/micro_qr.h).
 
 #### Simple example
 ```
@@ -93,11 +95,20 @@ int main()
   * Support will be added in the future
 
 # CI builds
-CI builds are usually run in a docker container.
-See `ci_build.Dockerfile` for more info.
-You can also hit `ci_build.sh` which creates and runs the docker image for you.
+CI builds usually consists of a test build and a conan demo build. 
+If and only if both builds were successful, the CI state is green.
+
+# Tests
+All tests are usually built and run in docker containers.
+See [`test/linux.Dockerfile`](test/linux.Dockerfile) for more info.
+You can also hit [`test/linux_build.sh`](test/linux_build.sh) which creates and 
+runs the docker image for you.
 
 # Conan
-The library supports Conan out of the box.
-The `conan_demo.Dockerfile` and `conan_demo.sh` are for demonstration purposes.
-It creates a small command-line tools which can create QR symbols from a given text message.
+The library supports _Conan_ out of the box. The [`conan_demo/Dockerfile`](conan_demo/Dockerfile) 
+and [`conan_demo/build.sh`](conan_demo/build.sh) are for demonstration purposes.
+It creates a small command-line tool which can create QR symbols from a given text message.
+
+Please note: 
+The _Conan_ build is part of the CI checks. 
+The tool has to be compiled successfully in order to clear this stage.

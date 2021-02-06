@@ -1,5 +1,3 @@
-from conans import ConanFile, CMake
-
 from conans import ConanFile
 
 class LibqrcodeConan(ConanFile):
@@ -7,7 +5,7 @@ class LibqrcodeConan(ConanFile):
     version = "v1.0"
     exports_sources = "include/*"
     no_copy_source = True
-    url = "https://"
+    url = "https://github.com/yax-lakam-tuun/libqrcode"
     license = "MIT License"
     description = "A header-only C++20 library for generating QR Codes"
     settings = "os"
