@@ -1,7 +1,7 @@
 # 
 # The MIT License
 # 
-# Copyright (c) 2020 Sebastian Bauer
+# Copyright (c) 2021 Sebastian Bauer
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
