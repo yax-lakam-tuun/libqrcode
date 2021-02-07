@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  cu_on_linux:
+  ci_on_linux:
     runs-on: ubuntu-latest
 
     steps:
