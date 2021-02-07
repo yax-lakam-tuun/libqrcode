@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 SHELL ["cmd", "/S", "/C"]
 
-COPY Install.cmd C:/TEMP/
+COPY test/Install.cmd C:/TEMP/
 ADD https://aka.ms/vscollect.exe C:/TEMP/collect.exe
 ADD https://aka.ms/vs/16/release/vs_buildtools.exe C:/TEMP/vs_buildtools.exe
 
