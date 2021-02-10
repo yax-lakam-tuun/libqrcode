@@ -37,7 +37,6 @@ add_library(qrcode INTERFACE)
 target_sources(qrcode INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/include/cx/vector.h
 
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/qrcode/qrcode.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/qrcode/result.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/qrcode/svg.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/qrcode/symbol.h
@@ -162,6 +161,8 @@ target_sources(qrcode INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/include/qrcode/micro_qr/symbol_version.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/qrcode/micro_qr/timing_pattern.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/qrcode/micro_qr/total_data_bits.h
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/qrcode/qrcode.h
 )
 
 target_include_directories(qrcode INTERFACE "include")

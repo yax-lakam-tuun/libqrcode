@@ -23,4 +23,5 @@
  */
 #pragma once
 
-//#include <qrcode/qr/qr.h>
+#include <qrcode/qr/qr.h>
+#include <qrcode/micro_qr/micro_qr.h>
