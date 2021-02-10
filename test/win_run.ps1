@@ -1,6 +1,11 @@
 
-cd (Split-Path $MyInvocation.MyCommand.Path)
+Push-Location $PSScriptRoot
 
-$ContainerName="libqrcode_test_build"
-docker build -t $ContainerName -f win.Dockerfile ../
-docker run $ContainerName
+try {
+    $ContainerName="libqrcode_test_build"
+    docker build -t $ContainerName -f win.Dockerfile ../
+    docker run --rm -it $ContainerName
+}
+finally {
+    Pop-Location
+}

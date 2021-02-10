@@ -138,11 +138,11 @@ namespace qrcode::test
             struct symbol_stub { constexpr auto operator==(symbol_stub const&) const -> bool = default; };
             auto const any_symbol = symbol_stub{};
 
-            auto&& value = result{any_symbol}.value();
+            constexpr auto is_rvalue = std::is_rvalue_reference_v<decltype(result{any_symbol}.value())>;
             
-            return value == any_symbol 
-                && std::is_rvalue_reference_v<decltype(value)>
-                && std::is_same_v<std::decay_t<decltype(value)>, symbol_stub>;
+            return result{any_symbol}.value() == any_symbol 
+                && is_rvalue
+                && std::is_same_v<std::decay_t<decltype(result{any_symbol}.value())>, symbol_stub>;
         };
         static_assert(f());
     }
