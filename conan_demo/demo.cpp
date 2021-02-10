@@ -3,7 +3,7 @@
 #include <ranges>
 #include <optional>
 
-#include <qrcode/qr/qr.h>
+#include <qrcode/qrcode.h>
 #include <qrcode/svg.h>
 
 using namespace qrcode;
