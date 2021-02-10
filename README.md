@@ -101,12 +101,12 @@ If and only if both builds were successful, the CI state is green.
 # Tests
 All tests are usually built and run in docker containers.
 See [`test/linux.Dockerfile`](test/linux.Dockerfile) for more info.
-You can also hit [`test/linux_run.sh`](test/linux_build.sh) which creates and 
+You can also hit [`test/linux_run.sh`](test/linux_run.sh) which creates and 
 runs the docker image for you.
 
 # Conan
 The library supports _Conan_ out of the box. The [`conan_demo/Dockerfile`](conan_demo/Dockerfile) 
-and [`conan_demo/run.sh`](conan_demo/build.sh) are for demonstration purposes.
+and [`conan_demo/run.sh`](conan_demo/run.sh) are for demonstration purposes.
 It creates a small command-line tool which can create QR symbols from a given text message.
 
 Please note: 
