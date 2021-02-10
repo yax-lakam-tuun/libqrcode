@@ -33,13 +33,13 @@ One can either use the conan recipe provided in this repository or directly inte
 into your project. As this libary is header-only, it should be quite easy to setup. 
 Add the libqrcode include directory to your project's header search path
 
-In your project, just in include the main headers [`qr/qr.h`](include/qrcode/qr/qr.h) or 
-[`micro_qr/micro_qr.h`](include/qrcode/micro_qr/micro_qr.h).
+In your project, just in include the header [`qrcode/qrcode.h`](`qrcode/qrcode.h`). 
+Micro QR api is located within namespace `micro_qr`.
+QR api is located within namespace `qr`.
 
 #### Simple example
 ```
-#include <qrcode/qr/qr.h>
-#include <qrcode/micro_qr/micro_qr.h>
+#include <qrcode/qrcode.h>
 
 int main()
 {
@@ -52,7 +52,7 @@ int main()
 
 #### ECI example
 ```
-#include <qrcode/qr/qr.h>
+#include <qrcode/qrcode.h>
 
 int main()
 {
@@ -67,7 +67,7 @@ int main()
 
 #### Accessing modules
 ```
-#include <qrcode/qr/qr.h>
+#include <qrcode/qrcode.h>
 #include <iostream>
 
 int main()

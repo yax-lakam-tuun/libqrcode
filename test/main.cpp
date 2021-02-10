@@ -27,7 +27,6 @@
 
 #include <cx/vector.h>
 
-#include <qrcode/qrcode.h>
 #include <qrcode/result.h>
 #include <qrcode/svg.h>
 #include <qrcode/symbol.h>
@@ -151,6 +150,8 @@
 #include <qrcode/micro_qr/symbol_version.h>
 #include <qrcode/micro_qr/timing_pattern.h>
 #include <qrcode/micro_qr/total_data_bits.h>
+
+#include <qrcode/qrcode.h>
 
 template<class Stream>
 class main_frame
