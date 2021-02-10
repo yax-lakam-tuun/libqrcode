@@ -33,7 +33,7 @@ One can either use the conan recipe provided in this repository or directly inte
 into your project. As this libary is header-only, it should be quite easy to setup. 
 Add the libqrcode include directory to your project's header search path
 
-In your project, just in include the header [`qrcode/qrcode.h`](`qrcode/qrcode.h`). 
+In your project, just in include the header [`qrcode/qrcode.h`](qrcode/qrcode.h). 
 Micro QR api is located within namespace `micro_qr`.
 QR api is located within namespace `qr`.
 
