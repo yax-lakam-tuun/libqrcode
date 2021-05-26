@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 SHELL ["cmd", "/S", "/C"]
-ADD https://aka.ms/vs/16/release/vs_buildtools.exe C:/TEMP/vs_buildtools.exe
+ADD https://download.visualstudio.microsoft.com/download/pr/cb1d5164-e767-4886-8955-2df3a7c816a8/b9ff67da6d68d6a653a612fd401283cc213b4ec4bae349dd3d9199659a7d9354/vs_BuildTools.exe C:/TEMP/vs_buildtools.exe
 RUN C:\TEMP\vs_buildtools.exe --quiet --wait --norestart --nocache \
         --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended \
         --add Microsoft.VisualStudio.Component.VC.ATL \
