@@ -36,6 +36,8 @@ target_compile_options(libqrcode_test PRIVATE $<$<CXX_COMPILER_ID:GNU>:
     -fconstexpr-depth=9999999 -fconstexpr-ops-limit=9999999999 -fconcepts-diagnostics-depth=10>)
 target_compile_options(libqrcode_test PRIVATE $<$<CXX_COMPILER_ID:Clang>:
     -fconstexpr-steps=999999999>)
+target_compile_options(libqrcode_test PRIVATE $<$<CXX_COMPILER_ID:MSVC>:
+    /constexpr:steps999999999>)
 
 target_compile_options(libqrcode_test PRIVATE -DQRCODE_TESTS_ENABLED)
 target_link_libraries(libqrcode_test PRIVATE qrcode)

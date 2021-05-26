@@ -24,6 +24,7 @@
 #pragma once
 
 #include <ranges>
+#include <cassert>
 
 #include <qrcode/data/bit_stream.h>
 #include <qrcode/data/numeric_encoding.h>

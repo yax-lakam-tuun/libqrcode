@@ -113,7 +113,9 @@ namespace qrcode::qr
 
         auto mask = 0b1;
         auto make_function = module_traits<T>::make_function;
-        for (auto i = begin(range1), j = begin(range2); i != end(range1); ++i, ++j, mask <<= 1)
+        auto i = begin(range1);
+        auto j = begin(range2);
+        for (; i != end(range1); ++i, ++j, mask <<= 1)
         {
             auto const function_module = make_function(bits & mask);
             *i = function_module;
