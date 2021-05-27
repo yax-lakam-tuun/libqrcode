@@ -24,6 +24,7 @@
 #pragma once
 
 #include <ranges>
+#include <cassert>
 
 #include <qrcode/data/bit_stream.h>
 #include <qrcode/data/kanji.h>
@@ -74,7 +75,6 @@ namespace qrcode::data
 }
 
 #ifdef QRCODE_TESTS_ENABLED
-
 namespace qrcode::data::detail::test
 {
     constexpr auto kanjis_can_be_added_to_a_given_bit_stream_as_13_bit_representation()
@@ -85,7 +85,7 @@ namespace qrcode::data::detail::test
 
             encode(stream, kanji{0xD9Fu});
             
-            return std::ranges::equal(stream.get(), std::array{0,1,1,0,1,1,0,0,1,1,1,1,1});
+            return std::ranges::equal(stream.get(), std::array<bool,13>{0,1,1,0,1,1,0,0,1,1,1,1,1});
         };
         static_assert(f());
     }
@@ -116,7 +116,7 @@ namespace qrcode::data::test
             encode_kanjis(stream, std::array{0x93u, 0x5Fu, 0xE4u, 0xAAu});
             
             return std::ranges::equal(
-                stream.get(), std::array{0,1,1,0,1,1,0,0,1,1,1,1,1, 1,1,0,1,0,1,0,1,0,1,0,1,0});
+                stream.get(), std::array<bool,26>{0,1,1,0,1,1,0,0,1,1,1,1,1, 1,1,0,1,0,1,0,1,0,1,0,1,0});
         };
         static_assert(f());
     }
@@ -146,7 +146,7 @@ namespace qrcode::data::test
             
             return std::ranges::equal(
                 stream.get(), 
-                std::array{0,1,1,0,1,1,0,0,1,1,1,1,1, 1,1,0,1,0,1,0,1,0,1,0,1,0}
+                std::array<bool,26>{0,1,1,0,1,1,0,0,1,1,1,1,1, 1,1,0,1,0,1,0,1,0,1,0,1,0}
             );
         };
         static_assert(f());

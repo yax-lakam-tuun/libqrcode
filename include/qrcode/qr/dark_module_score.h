@@ -55,7 +55,8 @@ namespace qrcode::qr::detail
 
     [[nodiscard]] constexpr auto nearest_five_percentage_step(float proportion) noexcept
     {
-        return static_cast<int>(std::abs(50.f-proportion) / 5.f);
+        auto abs = [](auto value){ return value >= 0.f ? value : -value; }; // constexpr abs
+        return static_cast<int>(abs(50.f-proportion) / 5.f);
     }
 }   
 

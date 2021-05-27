@@ -36,9 +36,11 @@ namespace qrcode::structure::views
     template<class T> requires requires { { !std::declval<T>() } -> std::convertible_to<T>; }
     [[nodiscard]] constexpr auto timing_pattern(T initial)
     {
-        return std::views::iota(0) | std::views::transform([b=!initial](auto&&...) mutable 
+        return std::views::iota(0) | std::views::transform([b=initial](auto&&...) mutable 
         {
-            return b = !b;
+            auto current = b;
+            b = static_cast<T>(!b);
+            return current;
         });
     }
 }
@@ -92,12 +94,12 @@ namespace qrcode::structure::views::test
 {
     constexpr auto timing_patterns_are_vertical_and_horizontal_lines_consisting_of_alternating_dark_and_light_function_modules()
     {
-        static_assert(std::ranges::equal(views::timing_pattern(true) | std::views::take(1), std::array{1}));
-        static_assert(std::ranges::equal(views::timing_pattern(true) | std::views::take(3), std::array{1,0,1}));
-        static_assert(std::ranges::equal(views::timing_pattern(true) | std::views::take(5), std::array{1,0,1,0,1}));
-        static_assert(std::ranges::equal(views::timing_pattern(true) | std::views::take(7), std::array{1,0,1,0,1,0,1}));
-        static_assert(std::ranges::equal(views::timing_pattern(true) | std::views::take(9), std::array{1,0,1,0,1,0,1,0,1}));
-        static_assert(std::ranges::equal(views::timing_pattern(false) | std::views::take(9), std::array{0,1,0,1,0,1,0,1,0}));
+        static_assert(std::ranges::equal(views::timing_pattern(1) | std::views::take(1), std::array{1}));
+        static_assert(std::ranges::equal(views::timing_pattern(1) | std::views::take(3), std::array{1,0,1}));
+        static_assert(std::ranges::equal(views::timing_pattern(1) | std::views::take(5), std::array{1,0,1,0,1}));
+        static_assert(std::ranges::equal(views::timing_pattern(1) | std::views::take(7), std::array{1,0,1,0,1,0,1}));
+        static_assert(std::ranges::equal(views::timing_pattern(1) | std::views::take(9), std::array{1,0,1,0,1,0,1,0,1}));
+        static_assert(std::ranges::equal(views::timing_pattern(0) | std::views::take(9), std::array{0,1,0,1,0,1,0,1,0}));
     }
 }
 

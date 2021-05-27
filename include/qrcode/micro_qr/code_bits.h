@@ -114,7 +114,7 @@ namespace qrcode::micro_qr::test
 
         static_assert(std::ranges::equal(
             code_bits(any_data, any_capacity),
-            std::array{
+            std::array<bool,80>{
                 0,1,0,0,0,0,0,0, 0,0,0,1,1,0,0,0, 1,0,1,0,1,1,0,0, 1,1,0,0,0,0,1,1, 0,0,0,0,0,0,0,0,
                 1,0,0,0,0,1,1,0, 0,0,0,0,1,1,0,1, 0,0,1,0,0,0,1,0, 1,0,1,0,1,1,1,0, 0,0,1,1,0,0,0,0
             }

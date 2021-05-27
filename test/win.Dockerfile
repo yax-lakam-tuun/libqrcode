@@ -16,4 +16,4 @@ RUN cd C:/Code/libqrcode && mkdir "C:/Code/libqrcode/bin"
 
 WORKDIR C:/Code/libqrcode/bin
 ENTRYPOINT ["C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat", "&&", "powershell.exe", "-NoLogo", "-ExecutionPolicy", "Bypass"]
-CMD [ "/c", "cmake -GNinja -DQRCODE_TESTS_ENABLED:BOOL=True ../src/; cmake --build ./ --config Release" ]
+CMD [ "/c", "cmake -G\"Visual Studio 16 2019\" -DQRCODE_TESTS_ENABLED:BOOL=True ../src/; cmake --build ./ --config Release" ]

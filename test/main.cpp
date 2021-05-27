@@ -26,6 +26,7 @@
 #include <fstream>
 
 #include <cx/vector.h>
+#include <cx/cmath.h>
 
 #include <qrcode/result.h>
 #include <qrcode/svg.h>

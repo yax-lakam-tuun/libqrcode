@@ -41,9 +41,10 @@ namespace qrcode::qr::detail
     template<std::ranges::range Line>
     [[nodiscard]] constexpr auto finder_line_score(Line&& line)
     {
-        constexpr auto pattern_left = std::array{0,0,0,0,1,0,1,1,1,0,1};
-        constexpr auto pattern_right = std::array{1,0,1,1,1,0,1,0,0,0,0};
-        constexpr auto pattern_both = std::array{0,0,0,0,1,0,1,1,1,0,1,0,0,0,0};
+        using value_type = std::ranges::range_value_t<Line>;
+        constexpr auto pattern_left = std::array<value_type,11>{0,0,0,0,1,0,1,1,1,0,1};
+        constexpr auto pattern_right = std::array<value_type,11>{1,0,1,1,1,0,1,0,0,0,0};
+        constexpr auto pattern_both = std::array<value_type,15>{0,0,0,0,1,0,1,1,1,0,1,0,0,0,0};
 
         auto contains_range = [](auto&& range, auto&& subrange)
         {

@@ -115,13 +115,13 @@ namespace qrcode::data::detail::test
 
         using a = alphanumeric;
 
-        static_assert(std::ranges::equal(f(a::code_0, a::code_0), std::array{0,0,0,0,0,0,0,0,0,0,0}));
-        static_assert(std::ranges::equal(f(a::code_0, a::code_1), std::array{0,0,0,0,0,0,0,0,0,0,1}));
-        static_assert(std::ranges::equal(f(a::code_0, a::code_2), std::array{0,0,0,0,0,0,0,0,0,1,0}));
-        static_assert(std::ranges::equal(f(a::code_0, a::code_A), std::array{0,0,0,0,0,0,0,1,0,1,0}));
-        static_assert(std::ranges::equal(f(a::code_1, a::code_A), std::array{0,0,0,0,0,1,1,0,1,1,1}));
-        static_assert(std::ranges::equal(f(a::code_2, a::code_A), std::array{0,0,0,0,1,1,0,0,1,0,0}));
-        static_assert(std::ranges::equal(f(a::code_Z, a::code_B), std::array{1,1,0,0,0,1,1,0,0,1,0}));
+        static_assert(std::ranges::equal(f(a::code_0, a::code_0), std::array<bool,11>{0,0,0,0,0,0,0,0,0,0,0}));
+        static_assert(std::ranges::equal(f(a::code_0, a::code_1), std::array<bool,11>{0,0,0,0,0,0,0,0,0,0,1}));
+        static_assert(std::ranges::equal(f(a::code_0, a::code_2), std::array<bool,11>{0,0,0,0,0,0,0,0,0,1,0}));
+        static_assert(std::ranges::equal(f(a::code_0, a::code_A), std::array<bool,11>{0,0,0,0,0,0,0,1,0,1,0}));
+        static_assert(std::ranges::equal(f(a::code_1, a::code_A), std::array<bool,11>{0,0,0,0,0,1,1,0,1,1,1}));
+        static_assert(std::ranges::equal(f(a::code_2, a::code_A), std::array<bool,11>{0,0,0,0,1,1,0,0,1,0,0}));
+        static_assert(std::ranges::equal(f(a::code_Z, a::code_B), std::array<bool,11>{1,1,0,0,0,1,1,0,0,1,0}));
     }
 
     constexpr auto single_alphanumeric_encodes_given_alphanummeric_as_six_bits()
@@ -136,13 +136,13 @@ namespace qrcode::data::detail::test
         };
 
         using a = alphanumeric;
-        static_assert(std::ranges::equal(f(a::code_0), std::array{0,0,0,0,0,0}));
-        static_assert(std::ranges::equal(f(a::code_1), std::array{0,0,0,0,0,1}));
-        static_assert(std::ranges::equal(f(a::code_2), std::array{0,0,0,0,1,0}));
-        static_assert(std::ranges::equal(f(a::code_A), std::array{0,0,1,0,1,0}));
-        static_assert(std::ranges::equal(f(a::code_asterisk), std::array{1,0,0,1,1,1}));
-        static_assert(std::ranges::equal(f(a::code_percent), std::array{1,0,0,1,1,0}));
-        static_assert(std::ranges::equal(f(a::code_dollar), std::array{1,0,0,1,0,1}));
+        static_assert(std::ranges::equal(f(a::code_0), std::array<bool,6>{0,0,0,0,0,0}));
+        static_assert(std::ranges::equal(f(a::code_1), std::array<bool,6>{0,0,0,0,0,1}));
+        static_assert(std::ranges::equal(f(a::code_2), std::array<bool,6>{0,0,0,0,1,0}));
+        static_assert(std::ranges::equal(f(a::code_A), std::array<bool,6>{0,0,1,0,1,0}));
+        static_assert(std::ranges::equal(f(a::code_asterisk), std::array<bool,6>{1,0,0,1,1,1}));
+        static_assert(std::ranges::equal(f(a::code_percent), std::array<bool,6>{1,0,0,1,1,0}));
+        static_assert(std::ranges::equal(f(a::code_dollar), std::array<bool,6>{1,0,0,1,0,1}));
     }
 }
 
@@ -160,7 +160,7 @@ namespace qrcode::data::test
             
             return std::ranges::equal(
                 stream.get(), 
-                std::array{0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,1,1,1,1,1,0,0,0,1,1,0,0,1,0});
+                std::array<bool,33>{0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,1,1,1,1,1,0,0,0,1,1,0,0,1,0});
         };
         static_assert(f());
     }
@@ -175,7 +175,8 @@ namespace qrcode::data::test
             encode_alphanumerics(stream, std::array{a::code_0, a::code_1,a::code_1, a::code_A,a::code_Z}); 
             
             return std::ranges::equal(
-                stream.get(), std::array{0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,1,1,1,1,0,0,0,1,1});
+                stream.get(), 
+                std::array<bool,28>{0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,1,1,1,1,0,0,0,1,1});
         };
         static_assert(f());
     }
@@ -191,7 +192,8 @@ namespace qrcode::data::test
                 stream, std::array{a::code_A, a::code_C,a::code_minus, a::code_4,a::code_2}); 
             
             return std::ranges::equal(
-                stream.get(), std::array{0,0,1,1,1,0,0,1,1,1,0,1,1,1,0,0,1,1,1,0,0,1,0,0,0,0,1,0});
+                stream.get(), 
+                std::array<bool,28>{0,0,1,1,1,0,0,1,1,1,0,1,1,1,0,0,1,1,1,0,0,1,0,0,0,0,1,0});
         };
         static_assert(f());
     }

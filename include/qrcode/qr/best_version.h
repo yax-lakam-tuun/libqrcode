@@ -38,8 +38,9 @@ namespace qrcode::qr
     {
         auto const bit_table = total_data_bits(error_level);
         auto const found = std::ranges::upper_bound(bit_table, data_bit_count, std::less_equal{});
+        auto const version_number = static_cast<int>(1+std::distance(begin(bit_table), found));
         return found != end(bit_table) 
-            ? std::optional<symbol_version>{1+std::distance(begin(bit_table), found)} 
+            ? std::optional<symbol_version>{version_number} 
             : std::optional<symbol_version>{};
     }
 }

@@ -52,7 +52,7 @@ namespace qrcode::code
         {
             using qrcode::code::detail::msb_index;
             auto const last_bit = state >> (msb_index(generator)-1);
-            state = ((state << 1) | bit) ^ (last_bit * generator);
+            state = ((state << 1) | static_cast<T>(bit)) ^ (last_bit * generator);
         }
         
         [[nodiscard]] friend constexpr auto state(lfsr const& instance) noexcept

@@ -51,16 +51,17 @@ namespace qrcode::structure
 
         constexpr auto operator^=(bool rhs)
         {
-            value ^= rhs;
+            value ^= static_cast<value_type>(rhs);
             return *this;
         }
 
     private:
         constexpr module(unsigned int internal_value) 
-        : value{static_cast<std::uint8_t>(internal_value)} 
+        : value{static_cast<value_type>(internal_value)} 
         {}
 
-        std::uint8_t value;
+        using value_type = std::uint8_t;
+        value_type value;
     };
 
     [[nodiscard]] constexpr auto is_free(module const& module) noexcept 

@@ -80,12 +80,12 @@ namespace qrcode::data::test
     constexpr auto bit_streams_accept_integers_with_their_bit_count_and_convert_it_to_a_binary_stream_msb_first()
     {
         static_assert(std::ranges::equal(bit_stream{}.add(0, 0_bits).get(), std::array<bool,0>{}));
-        static_assert(std::ranges::equal(bit_stream{}.add(0b0, 1_bits).get(), std::array{0}));
-        static_assert(std::ranges::equal(bit_stream{}.add(0b1, 1_bits).get(), std::array{1}));
-        static_assert(std::ranges::equal(bit_stream{}.add(0b10, 2_bits).get(), std::array{1,0}));
-        static_assert(std::ranges::equal(bit_stream{}.add(0b110, 3_bits).get(), std::array{1,1,0}));
-        static_assert(std::ranges::equal(bit_stream{}.add(0b110, 3_bits).add(0b00010, 5_bits).get(), std::array{1,1,0,0,0,0,1,0}));
-        static_assert(std::ranges::equal(bit_stream{}.add(6, 16_bits).get(), std::array{0,0,0,0,  0,0,0,0,  0,0,0,0,  0,1,1,0}));
+        static_assert(std::ranges::equal(bit_stream{}.add(0b0, 1_bits).get(), std::array<bool,1>{0}));
+        static_assert(std::ranges::equal(bit_stream{}.add(0b1, 1_bits).get(), std::array<bool,1>{1}));
+        static_assert(std::ranges::equal(bit_stream{}.add(0b10, 2_bits).get(), std::array<bool,2>{1,0}));
+        static_assert(std::ranges::equal(bit_stream{}.add(0b110, 3_bits).get(), std::array<bool,3>{1,1,0}));
+        static_assert(std::ranges::equal(bit_stream{}.add(0b110, 3_bits).add(0b00010, 5_bits).get(), std::array<bool,8>{1,1,0,0,0,0,1,0}));
+        static_assert(std::ranges::equal(bit_stream{}.add(6, 16_bits).get(), std::array<bool,16>{0,0,0,0,  0,0,0,0,  0,0,0,0,  0,1,1,0}));
     }
 
     constexpr auto bit_streams_have_a_size()

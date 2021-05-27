@@ -116,7 +116,7 @@ namespace qrcode::qr::detail::test
 
             return std::ranges::equal(
                 stream.get(),
-                std::array{
+                std::array<bool,26>{
                     0,0,0,1,                    // mode: numeric
                     0,0,0,0,0,0,0,0,0,0,1,1,    // count: 3
                     0,0,0,0,0,0,1,1,0,0         // data
@@ -141,7 +141,7 @@ namespace qrcode::qr::detail::test
 
             return std::ranges::equal(
                 stream.get(),
-                std::array{
+                std::array<bool,43>{
                     0,0,1,0,                                                   // mode: alphanumeric
                     0,0,0,0,0,0,0,0,1,0,1,                                     // count: 5
                     0,0,1,1,1,0,0,1,1,1,0, 1,1,1,0,0,1,1,1,0,0,1, 0,0,0,0,1,0  // data
@@ -166,7 +166,7 @@ namespace qrcode::qr::detail::test
 
             return std::ranges::equal(
                 stream.get(),
-                std::array{
+                std::array<bool,28>{
                     0,1,0,0,                          // mode: byte
                     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,  // count: 1
                     1,1,1,1,0,0,0,1                   // data
@@ -191,7 +191,7 @@ namespace qrcode::qr::detail::test
 
             return std::ranges::equal(
                 stream.get(),
-                std::array{
+                std::array<bool,40>{
                     1,0,0,0,                                              // mode: kanji
                     0,0,0,0,0,0,0,0,1,0,                                  // count: 2
                     0,1,1,0,1,1,0,0,1,1,1,1,1, 1,1,0,1,0,1,0,1,0,1,0,1,0  // data
