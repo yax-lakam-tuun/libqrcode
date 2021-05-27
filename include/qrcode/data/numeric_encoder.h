@@ -110,7 +110,7 @@ namespace qrcode::data::test
 
             return std::ranges::equal(
                 stream.get(),
-                std::array{
+                std::array<bool,36>{
                     0,1,0,1, // mode
                     0,1,0,0,0, // count
                     0,0,0,0,0,0,1,1,0,0, 0,1,0,1,0,1,1,0,0,1, 1,0,0,0,0,1,1
@@ -140,7 +140,7 @@ namespace qrcode::data::test
 
             return std::ranges::equal(
                 stream.get(),
-                std::array{
+                std::array<bool,63>{
                     0,1,0,1, // mode
                     1,0,0,0,0, // count = 16
                     0,0,0,0,0,0,1,1,0,0, 0,1,0,1,0,1,1,0,0,1, 1,0,1,0,1,0,0,1,1,0, 

@@ -140,11 +140,11 @@ namespace qrcode::data::detail::test
 
         using n = numeric;
 
-        static_assert(std::ranges::equal(f(n::n0,n::n1,n::n2), std::array{0,0,0,0,0,0,1,1,0,0}));
-        static_assert(std::ranges::equal(f(n::n3,n::n4,n::n5), std::array{0,1,0,1,0,1,1,0,0,1}));
-        static_assert(std::ranges::equal(f(n::n0,n::n1,n::n2,n::n3,n::n4,n::n5), std::array{0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,1,0,0,1}));
-        static_assert(std::ranges::equal(f(n::n6), std::array{0,1,1,0}));
-        static_assert(std::ranges::equal(f(n::n8,n::n2), std::array{1,0,1,0,0,1,0}));
+        static_assert(std::ranges::equal(f(n::n0,n::n1,n::n2), std::array<bool,10>{0,0,0,0,0,0,1,1,0,0}));
+        static_assert(std::ranges::equal(f(n::n3,n::n4,n::n5), std::array<bool,10>{0,1,0,1,0,1,1,0,0,1}));
+        static_assert(std::ranges::equal(f(n::n0,n::n1,n::n2,n::n3,n::n4,n::n5), std::array<bool,20>{0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,1,0,0,1}));
+        static_assert(std::ranges::equal(f(n::n6), std::array<bool,4>{0,1,1,0}));
+        static_assert(std::ranges::equal(f(n::n8,n::n2), std::array<bool,7>{1,0,1,0,0,1,0}));
     }
 
     constexpr auto encode_numerics_groups_three_digits_to_one_number_and_converts_these_groups_to_their_bitwise_representation()
@@ -159,9 +159,9 @@ namespace qrcode::data::detail::test
         };
 
         using n = numeric;
-        static_assert(std::ranges::equal(f(std::array{n::n0,n::n1,n::n2}), std::array{0,0,0,0,0,0,1,1,0,0}));
-        static_assert(std::ranges::equal(f(std::array{n::n3,n::n4,n::n5}), std::array{0,1,0,1,0,1,1,0,0,1}));
-        static_assert(std::ranges::equal(f(std::array{n::n0,n::n1,n::n2,n::n3,n::n4,n::n5}), std::array{0,0,0,0,0,0,1,1,0,0,0,1,0,1,0,1,1,0,0,1}));
+        static_assert(std::ranges::equal(f(std::array{n::n0,n::n1,n::n2}), std::array<bool,10>{0,0,0,0,0,0,1,1,0,0}));
+        static_assert(std::ranges::equal(f(std::array{n::n3,n::n4,n::n5}), std::array<bool,10>{0,1,0,1,0,1,1,0,0,1}));
+        static_assert(std::ranges::equal(f(std::array{n::n0,n::n1,n::n2,n::n3,n::n4,n::n5}), std::array<bool,20>{0,0,0,0,0,0,1,1,0,0,0,1,0,1,0,1,1,0,0,1}));
     }    
 }
 
@@ -180,11 +180,11 @@ namespace qrcode::data::test
 
         using n = numeric;
 
-        static_assert(std::ranges::equal(f(std::array{n::n6}), std::array{0,1,1,0}));
-        static_assert(std::ranges::equal(f(std::array{n::n8,n::n2}), std::array{1,0,1,0,0,1,0}));
-        static_assert(std::ranges::equal(f(std::array{n::n8,n::n2,n::n1,n::n3}), std::array{1,1,0,0,1,1,0,1,0,1,0,0,1,1}));
-        static_assert(std::ranges::equal(f(std::array{n::n8,n::n2,n::n1,n::n3,n::n4}), std::array{1,1,0,0,1,1,0,1,0,1,0,1,0,0,0,1,0}));
-        static_assert(std::ranges::equal(f(std::array{n::n8,n::n6,n::n7,n::n5,n::n3,n::n0,n::n9}), std::array{1,1,0,1,1,0,0,0,1,1,1,0,0,0,0,1,0,0,1,0,1,0,0,1}));
+        static_assert(std::ranges::equal(f(std::array{n::n6}), std::array<bool,4>{0,1,1,0}));
+        static_assert(std::ranges::equal(f(std::array{n::n8,n::n2}), std::array<bool,7>{1,0,1,0,0,1,0}));
+        static_assert(std::ranges::equal(f(std::array{n::n8,n::n2,n::n1,n::n3}), std::array<bool,14>{1,1,0,0,1,1,0,1,0,1,0,0,1,1}));
+        static_assert(std::ranges::equal(f(std::array{n::n8,n::n2,n::n1,n::n3,n::n4}), std::array<bool,17>{1,1,0,0,1,1,0,1,0,1,0,1,0,0,0,1,0}));
+        static_assert(std::ranges::equal(f(std::array{n::n8,n::n6,n::n7,n::n5,n::n3,n::n0,n::n9}), std::array<bool,24>{1,1,0,1,1,0,0,0,1,1,1,0,0,0,0,1,0,0,1,0,1,0,0,1}));
     }
 
     constexpr auto numeric_character_count_returns_the_number_of_characters_which_can_be_encoded_from_given_message()

@@ -113,7 +113,7 @@ namespace qrcode::micro_qr::detail::test
 
             return std::ranges::equal(
                 stream.get(),
-                std::array{
+                std::array<bool,13>{
                     0,1,1,                      // no mode in M1, count: 3
                     0,0,0,0,0,0,1,1,0,0         // data
                 }
@@ -137,7 +137,7 @@ namespace qrcode::micro_qr::detail::test
 
             return std::ranges::equal(
                 stream.get(),
-                std::array{
+                std::array<bool,32>{
                     1,                                                         // mode: alphanumeric
                     1,0,1,                                                     // count: 5
                     0,0,1,1,1,0,0,1,1,1,0, 1,1,1,0,0,1,1,1,0,0,1, 0,0,0,0,1,0  // data
@@ -167,7 +167,7 @@ namespace qrcode::micro_qr::detail::test
 
             return std::ranges::equal(
                 stream.get(),
-                std::array{
+                std::array<bool,14>{
                     1,0,                              // mode: byte
                     0,0,0,1,                          // count: 1
                     1,1,1,1,0,0,0,1                   // data
@@ -198,7 +198,7 @@ namespace qrcode::micro_qr::detail::test
 
             return std::ranges::equal(
                 stream.get(),
-                std::array{
+                std::array<bool,33>{
                     0,1,1,                                                // mode: kanji
                     0,0,1,0,                                              // count: 2
                     0,1,1,0,1,1,0,0,1,1,1,1,1, 1,1,0,1,0,1,0,1,0,1,0,1,0  // data

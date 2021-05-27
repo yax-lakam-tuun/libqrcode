@@ -66,7 +66,7 @@ namespace qrcode::data::test
 
             encode(stream, any_mode_indicator);
 
-            return std::ranges::equal(stream.get(), std::array{0,0,0,1,0});
+            return std::ranges::equal(stream.get(), std::array<bool,5>{0,0,0,1,0});
         };
         static_assert(f());
     }
@@ -81,7 +81,7 @@ namespace qrcode::data::test
 
             encode(stream, any_count_indicator, any_count);
 
-            return std::ranges::equal(stream.get(), std::array{0,0,1,0,0,1,0,0,1,1});
+            return std::ranges::equal(stream.get(), std::array<bool,10>{0,0,1,0,0,1,0,0,1,1});
         };
         static_assert(f());
     }

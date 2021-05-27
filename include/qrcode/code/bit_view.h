@@ -240,7 +240,7 @@ namespace qrcode::code::test
 
             auto const range = bit_view{some_bytes};
             
-            return std::ranges::equal(range, std::array{1,1,0,0,0,1,1,1,  0,1,0,1,1,0,0,1});
+            return std::ranges::equal(range, std::array<bool,16>{1,1,0,0,0,1,1,1,  0,1,0,1,1,0,0,1});
         };
         static_assert(f());
     }
@@ -253,7 +253,7 @@ namespace qrcode::code::test
 
             auto const range = some_bytes | views::bit;
 
-            return std::ranges::equal(range, std::array{1,1,0,0,0,1,1,1,  0,1,0,1,1,0,0,1});
+            return std::ranges::equal(range, std::array<bool,16>{1,1,0,0,0,1,1,1,  0,1,0,1,1,0,0,1});
         };
         static_assert(f());
     }
@@ -268,7 +268,7 @@ namespace qrcode::code::test
                 | views::bit 
                 | std::views::transform([](auto v) { return !v; });
 
-            return std::ranges::equal(range, std::array{0,0,1,1,1,0,0,0,  1,0,1,0,0,1,1,0});
+            return std::ranges::equal(range, std::array<bool,16>{0,0,1,1,1,0,0,0,  1,0,1,0,0,1,1,0});
         };
         static_assert(f());
     }

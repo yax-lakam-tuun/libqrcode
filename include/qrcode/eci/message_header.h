@@ -55,12 +55,12 @@ namespace qrcode::eci::test
     {
         static_assert(std::ranges::equal(
             encode_wrapper(message_header{assignment_number{0}}).get(), 
-            std::array{0,1,1,1,  0,0,0,0,0,0,0,0}
+            std::array<bool,12>{0,1,1,1,  0,0,0,0,0,0,0,0}
         ));
 
         static_assert(std::ranges::equal(
             encode_wrapper(message_header{128}).get(), 
-            std::array{0,1,1,1,  1,0,0,0,0,0,0,0,  1,0,0,0,0,0,0,0}
+            std::array<bool,20>{0,1,1,1,  1,0,0,0,0,0,0,0,  1,0,0,0,0,0,0,0}
         ));
     }
 
