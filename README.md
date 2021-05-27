@@ -90,9 +90,11 @@ int main()
 
 # Requirements
 * C++20 compiler and standard library
-* gcc10 and libstdc++-10-dev or higher (see Dockerfile)
-* Not supported currently: Windows and macOS (due to lack of C++20 features)
-  * Support will be added in the future
+* Supported:
+   * gcc10 and libstdc++-10-dev or higher (see [`test/linux.Dockerfile`](test/linux.Dockerfile))
+   * msvc: Visual Studio 2019 16.10.0 (see [`test/win.Dockerfile`](test/win.Dockerfile))
+* Not supported: 
+  * macOS (due to lack of C++20 features), support will be added in the future
 
 # CI builds
 CI builds usually consists of a test build and a conan demo build. 
