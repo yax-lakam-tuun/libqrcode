@@ -94,7 +94,20 @@ int main()
    * gcc10 and libstdc++-10-dev or higher (see [`test/linux.Dockerfile`](test/linux.Dockerfile))
    * msvc: Visual Studio 2019 16.10.0 (see [`test/win.Dockerfile`](test/win.Dockerfile))
 * Not supported: 
+  * clang doesn't seem to support all featured of C++20 needed to make this work
   * macOS (due to lack of C++20 features), support will be added in the future
+
+# How to build
+* Since the library is header-only, building is actually not necessary.
+* Just put the `include` folder of this project into your header search path and it should just work.
+* However, if you'd like to run the tests, please select the top-level of the project in order to run _CMake_.
+* For more information, please have a look at the _Dockerfile_ in the test folder and consider the remarks below.
+
+## How to run the tests
+If you would like to run the tests, one has to add the following cmake flag: `-DQRCODE_TESTS_ENABLED:BOOL=True`
+
+## Debug builds using MSVC
+Building with tests enabled in _Debug_ configuration won't build due to an issue in _Microsoft_'s STL implementation. _Release_ configuration works though.
 
 # CI builds
 CI builds usually consists of a test build and a conan demo build. 
