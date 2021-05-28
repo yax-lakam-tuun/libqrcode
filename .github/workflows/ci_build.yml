@@ -30,5 +30,3 @@ jobs:
 
       - name: Run tests
         run: ./test/win_run.ps1
-        continue-on-error: true
-
