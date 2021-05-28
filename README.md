@@ -33,7 +33,7 @@ One can either use the conan recipe provided in this repository or directly inte
 into your project. As this libary is header-only, it should be quite easy to setup. 
 Add the libqrcode include directory to your project's header search path
 
-In your project, just in include the header [`qrcode/qrcode.h`](`qrcode/qrcode.h`). 
+In your project, just in include the header [`qrcode/qrcode.h`](include/qrcode/qrcode.h). 
 Micro QR api is located within namespace `micro_qr`.
 QR api is located within namespace `qr`.
 
@@ -116,12 +116,12 @@ If and only if both builds were successful, the CI state is green.
 # Tests
 All tests are usually built and run in docker containers.
 See [`test/linux.Dockerfile`](test/linux.Dockerfile) for more info.
-You can also hit [`test/linux_build.sh`](test/linux_build.sh) which creates and 
+You can also hit [`test/linux_run.sh`](test/linux_run.sh) which creates and 
 runs the docker image for you.
 
 # Conan
 The library supports _Conan_ out of the box. The [`conan_demo/Dockerfile`](conan_demo/Dockerfile) 
-and [`conan_demo/build.sh`](conan_demo/build.sh) are for demonstration purposes.
+and [`conan_demo/run.sh`](conan_demo/run.sh) are for demonstration purposes.
 It creates a small command-line tool which can create QR symbols from a given text message.
 
 Please note: 
