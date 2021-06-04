@@ -61,14 +61,64 @@ namespace qrcode::structure
     template<>
     struct module_traits<module>
     {
-        static constexpr auto is_free = [](auto value) { return is_free(value); };
+        static constexpr auto is_free = [](auto value) { return qrcode::structure::is_free(value); };
         static constexpr auto is_set = [](auto value) { return static_cast<bool>(value); };
-        static constexpr auto is_data = [](auto value) { return is_data(value); };
-        static constexpr auto is_function = [](auto value) { return is_function(value); };
-        static constexpr auto make_function = [](auto bit) { return make_function(bit); };
-        static constexpr auto make_data = [](auto bit) { return make_data(bit); };
-        static constexpr auto make_free = []() { return make_free(); };
+        static constexpr auto is_data = [](auto value) { return qrcode::structure::is_data(value); };
+        static constexpr auto is_function = [](auto value) { return qrcode::structure::is_function(value); };
+        static constexpr auto make_function = [](auto bit) { return qrcode::structure::make_function(bit); };
+        static constexpr auto make_data = [](auto bit) { return qrcode::structure::make_data(bit); };
+        static constexpr auto make_free = []() { return qrcode::structure::make_free(); };
         static constexpr auto apply_mask = [](auto value, auto mask) { return value ^ mask; };
     };
 }
 
+#ifdef QRCODE_TESTS_ENABLED
+namespace qrcode::structure::test
+{
+    constexpr auto module_traits_define_a_set_of_functions_to_handle_the_modules()
+    {
+        static_assert(module_traits<module>::is_free(make_free()));
+        static_assert(!module_traits<module>::is_free(make_function(false)));
+        static_assert(!module_traits<module>::is_free(make_function(true)));
+        static_assert(!module_traits<module>::is_free(make_data(false)));
+        static_assert(!module_traits<module>::is_free(make_data(true)));
+
+        static_assert(!module_traits<module>::is_set(make_free()));
+        static_assert(!module_traits<module>::is_set(make_function(false)));
+        static_assert(module_traits<module>::is_set(make_function(true)));
+        static_assert(!module_traits<module>::is_set(make_data(false)));
+        static_assert(module_traits<module>::is_set(make_data(true)));
+
+        static_assert(!module_traits<module>::is_data(make_free()));
+        static_assert(!module_traits<module>::is_data(make_function(false)));
+        static_assert(!module_traits<module>::is_data(make_function(true)));
+        static_assert(module_traits<module>::is_data(make_data(false)));
+        static_assert(module_traits<module>::is_data(make_data(true)));
+
+        static_assert(!module_traits<module>::is_function(make_free()));
+        static_assert(module_traits<module>::is_function(make_function(false)));
+        static_assert(module_traits<module>::is_function(make_function(true)));
+        static_assert(!module_traits<module>::is_function(make_data(false)));
+        static_assert(!module_traits<module>::is_function(make_data(true)));
+
+        static_assert(module_traits<module>::make_free() == make_free());
+        static_assert(module_traits<module>::make_function(false) == make_function(false));
+        static_assert(module_traits<module>::make_function(true) == make_function(true));
+        static_assert(module_traits<module>::make_data(false) == make_data(false));
+        static_assert(module_traits<module>::make_data(true) == make_data(true));
+
+        static_assert(module_traits<module>::apply_mask(make_function(false), false) == make_function(false));
+        static_assert(module_traits<module>::apply_mask(make_function(false), true) == make_function(true));
+        static_assert(module_traits<module>::apply_mask(make_function(true), true) == make_function(false));
+        static_assert(module_traits<module>::apply_mask(make_function(true), false) == make_function(true));
+
+        static_assert(module_traits<module>::apply_mask(make_data(false), false) == make_data(false));
+        static_assert(module_traits<module>::apply_mask(make_data(false), true) == make_data(true));
+        static_assert(module_traits<module>::apply_mask(make_data(true), true) == make_data(false));
+        static_assert(module_traits<module>::apply_mask(make_data(true), false) == make_data(true));
+
+        static_assert(module_traits<module>::apply_mask(make_free(), false) == make_free());
+        static_assert(module_traits<module>::apply_mask(make_free(), true) == make_free());
+    }
+}
+#endif

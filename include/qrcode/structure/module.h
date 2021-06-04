@@ -24,6 +24,7 @@
 #pragma once
 
 #include <cstdint>
+#include <cassert>
 
 namespace qrcode::structure
 {
@@ -96,7 +97,8 @@ namespace qrcode::structure
 
     [[nodiscard]] constexpr auto operator^(module a, bool b)
     {
-        a ^= b;
+        if (!is_free(a))
+            a ^= b;
         return a;
     }
 
